@@ -35,7 +35,7 @@ function Ocean() {
     clearTimeout(startTimeout);
     clearTimeout(timeout);
   };
-});
+}, []);
   return (
     <main className="ocean-page">
       <div className="ocean-background" aria-hidden="true">

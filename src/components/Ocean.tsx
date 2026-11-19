@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import OceanNav, { type SectionKey } from "./OceanNav";
 import "../styles/Ocean.css";
 
 const bubbles = Array.from({ length: 18 }, (_, index) => ({
@@ -12,7 +13,8 @@ const bubbles = Array.from({ length: 18 }, (_, index) => ({
 }));
 
 function Ocean() {
-  const [isExploring, setIsExploring] = useState(false);
+    const [activeSection, setActiveSection] =
+    useState<SectionKey>("home");
   const [fishMovingRight, setFishMovingRight] = useState(false);
 
   useEffect(() => {
@@ -36,6 +38,83 @@ function Ocean() {
     clearTimeout(timeout);
   };
 }, []);
+
+function renderSection() {
+    switch (activeSection) {
+      case "home":
+        return (
+          <div className="ocean-hero_content">
+            <p className="ocean-eyebrow">
+              Technology · People · Purpose
+            </p>
+
+            <h1>Beth Howell</h1>
+            <h2>Leadership and Development</h2>
+
+            <button
+              className="bubble-button"
+              onClick={() => setActiveSection("about")}
+            >
+              <span>Explore</span>
+              <ArrowRight size={19} />
+            </button>
+          </div>
+        );
+
+      case "about":
+        return (
+          <div className="ocean-intro">
+            <button
+              className="ocean-back"
+              onClick={() => setActiveSection("home")}
+            >
+              <ArrowDown size={15} />
+              Return to the surface
+            </button>
+
+            <p className="ocean-eyebrow">A little about me</p>
+
+            <h2>Curious by nature. Driven to build.</h2>
+
+            <p>
+              My background brings together software engineering,
+              technical leadership, program delivery, and operations.
+              I'm interested in using technology and thoughtful
+              collaboration to make meaningful things happen.
+            </p>
+          </div>
+        );
+
+      case "experience":
+        return (
+          <div className="ocean-intro">
+            <p className="ocean-eyebrow">My background</p>
+            <h2>Experience</h2>
+            <p>We'll build this section next.</p>
+          </div>
+        );
+
+      case "projects":
+        return (
+          <div className="ocean-intro">
+            <p className="ocean-eyebrow">Things I've built</p>
+            <h2>Projects</h2>
+            <p>We'll bring your Projects concept to life here.</p>
+          </div>
+        );
+
+      case "values":
+        return (
+          <div className="ocean-intro">
+            <p className="ocean-eyebrow">What matters</p>
+            <h2>Purpose and perspective</h2>
+            <p>We'll build this section later.</p>
+          </div>
+        );
+    }
+  }
+
+
   return (
     <main className="ocean-page">
       <div className="ocean-background" aria-hidden="true">
@@ -79,66 +158,19 @@ function Ocean() {
         </div>
       </div>
 
-      <header className="ocean-header">
-        <button
-          className="ocean-logo"
-          onClick={() => setIsExploring(false)}
-        >
-          B.
-        </button>
-
-        <nav className="ocean-nav" aria-label="Main navigation">
-          <button onClick={() => setIsExploring(false)}>Home</button>
-          <button onClick={() => setIsExploring(true)}>About</button>
-          <button onClick={() => setIsExploring(true)}>Experience</button>
-          <button onClick={() => setIsExploring(true)}>Projects</button>
-          <button onClick={() => setIsExploring(true)}>What matters</button>
-        </nav>
-      </header>
+       <OceanNav
+        activeSection={activeSection}
+        onNavigate={setActiveSection}
+      />
 
       <section className="ocean-hero">
-        {!isExploring ? (
-          <div className="ocean-hero_content">
-            <p className="ocean-eyebrow">Technology · People · Purpose</p>
-
-            <h1>Beth Howell</h1>
-
-            <h2>Leadership and Development</h2>
-
-            <button
-              className="bubble-button"
-              onClick={() => setIsExploring(true)}
-            >
-              <span>Explore</span>
-              <ArrowRight size={19} />
-            </button>
-          </div>
-        ) : (
-          <div className="ocean-intro">
-            <button
-              className="ocean-back"
-              onClick={() => setIsExploring(false)}
-            >
-              <ArrowDown size={15} />
-              Return to the surface
-            </button>
-
-            <p className="ocean-eyebrow">A little about me</p>
-
-            <h2>Curious by nature. Driven to build.</h2>
-
-            <p>
-              My background brings together software engineering,
-              technical leadership, program delivery, and operations.
-              I'm interested in using technology and thoughtful
-              collaboration to make meaningful things happen.
-            </p>
-          </div>
-        )}
+        {renderSection()}
       </section>
 
       <div className="ocean-scroll">
-        <span>{isExploring ? "Keep exploring" : "Dive in"}</span>
+        <span>
+          {activeSection === "home" ? "Dive in" : "Keep exploring"}
+        </span>
         <ArrowDown size={17} />
       </div>
     </main>

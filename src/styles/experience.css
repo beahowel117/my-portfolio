@@ -1,0 +1,168 @@
+
+.experience-section {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    color: white;
+  }
+  
+  .experience-heading {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    margin-bottom: 3rem;
+  }
+  
+  .experience-categories {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .experience-category-bubble,
+  .experience-bubble,
+  .experience-detail-bubble {
+    border: 1px solid rgba(220, 250, 255, 0.35);
+    background: radial-gradient(
+      circle at 35% 25%,
+      rgba(220, 250, 255, 0.25),
+      rgba(80, 170, 195, 0.13) 55%,
+      rgba(10, 55, 80, 0.35)
+    );
+    box-shadow:
+      inset 0 0 25px rgba(220, 250, 255, 0.12),
+      0 0 35px rgba(120, 220, 240, 0.12);
+    backdrop-filter: blur(12px);
+    color: white;
+  }
+  
+  .experience-category-bubble {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  
+  .experience-category-bubble:hover {
+    transform: scale(1.07);
+    box-shadow:
+      inset 0 0 30px rgba(220, 250, 255, 0.2),
+      0 0 45px rgba(120, 220, 240, 0.3);
+  }
+  
+  .experience-bubbles {
+    width: min(850px, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .experience-bubble {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.35s ease, background 0.35s ease;
+  }
+  
+  .experience-bubble:hover {
+    transform: translateY(-7px) scale(1.04);
+  }
+  
+  .experience-bubble small {
+    opacity: 0.8;
+    font-size: 0.8rem;
+  }
+  
+  .experience-bubble-link {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-top: 0.3rem;
+  }
+  
+  .experience-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    background: none;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+  
+  .experience-detail-bubble {
+    width: min(480px, 85vw);
+    min-height: 380px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .experience-detail-bubble .experience-back {
+    align-self: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .experience-detail-company {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+  
+  .experience-detail-bubble h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  
+  .experience-detail-bubble p {
+    line-height: 1.7;
+    max-width: 340px;
+  }
+  
+  @media (max-width: 600px) {
+    .experience-bubbles {
+      gap: 1rem;
+    }
+  
+    .experience-bubble {
+      width: 145px;
+      height: 145px;
+      padding: 1rem;
+    }
+  
+    .experience-detail-bubble {
+      min-height: 320px;
+      padding: 2.5rem;
+    }
+  }
+  

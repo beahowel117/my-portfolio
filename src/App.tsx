@@ -11,23 +11,7 @@ function App() {
 
   return (
     <>
-      {version === "landscape" ? <Landscape /> : <Ocean />}
-
-      <div className="version-switcher">
-        <button
-          className={version === "landscape" ? "selected" : ""}
-          onClick={() => setVersion("landscape")}
-        >
-          Landscape
-        </button>
-
-        <button
-          className={version === "ocean" ? "selected" : ""}
-          onClick={() => setVersion("ocean")}
-        >
-          Ocean
-        </button>
-      </div>
+     <Ocean />
     </>
   );
 }

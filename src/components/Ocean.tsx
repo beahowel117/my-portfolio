@@ -2,7 +2,10 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import OceanNav, { type SectionKey } from "./OceanNav";
+import Experience from "../sections/Experience";
+import Projects from "../sections/Projects";
 import "../styles/Ocean.css";
+import "../styles/bubbles.css";
 
 const bubbles = Array.from({ length: 18 }, (_, index) => ({
   id: index,
@@ -86,22 +89,10 @@ function renderSection() {
         );
 
       case "experience":
-        return (
-          <div className="ocean-intro">
-            <p className="ocean-eyebrow">My background</p>
-            <h2>Experience</h2>
-            <p>We'll build this section next.</p>
-          </div>
-        );
+        return <Experience />;
 
       case "projects":
-        return (
-          <div className="ocean-intro">
-            <p className="ocean-eyebrow">Things I've built</p>
-            <h2>Projects</h2>
-            <p>We'll bring your Projects concept to life here.</p>
-          </div>
-        );
+        return <Projects />;
 
       case "values":
         return (

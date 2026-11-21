@@ -4,7 +4,10 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import OceanNav, { type SectionKey } from "./OceanNav";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
-import SwimmingFish from "./Fish";
+import Jellyfish from "./JellyFish";
+import Starfish from "./Starfish";
+import SwimmingFish from "./SwimmingFish";
+import customFish from "./Fish";
 import "../styles/Ocean.css";
 import "../styles/bubbles.css";
 
@@ -115,7 +118,9 @@ function renderSection() {
         <div className="ocean-light ocean-light--one" />
         <div className="ocean-light ocean-light--two" />
         <div className="ocean-caustics" />
-        <SwimmingFish />
+        {customFish.map((fish) => (
+  <SwimmingFish key={fish.id} {...fish} />
+))}
         {/* animated fish*/}
         <div
             className={`fish-school ${
@@ -132,6 +137,25 @@ function renderSection() {
             <span className="shadow-fish fish-7" />
             <span className="shadow-fish fish-8" />
         </div>
+        <Jellyfish xOffset="14vw" yOffset="24vh" size={46} opacity={0.65} duration={6} />
+<Jellyfish
+  xOffset="82vw"
+  yOffset="58vh"
+  size={62}
+  bellColor="#38BDF8"
+  tentacleColor="#7DD3FC"
+  delay={1.5}
+/>
+
+<Starfish xOffset="6vw" bottomOffset="2.5vh" size={44} initialRotate={-15} />
+<Starfish
+  xOffset="88vw"
+  bottomOffset="4vh"
+  size={36}
+  color="#FDBA74"
+  initialRotate={22}
+  opacity={0.7}
+/>
        
         {/* animated bubbles*/}
         <div className="ocean-bubbles">

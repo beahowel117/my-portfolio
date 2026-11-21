@@ -4,6 +4,7 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import OceanNav, { type SectionKey } from "./OceanNav";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
+import SwimmingFish from "./Fish";
 import "../styles/Ocean.css";
 import "../styles/bubbles.css";
 
@@ -114,6 +115,7 @@ function renderSection() {
         <div className="ocean-light ocean-light--one" />
         <div className="ocean-light ocean-light--two" />
         <div className="ocean-caustics" />
+        <SwimmingFish />
         {/* animated fish*/}
         <div
             className={`fish-school ${

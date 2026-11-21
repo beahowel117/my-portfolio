@@ -442,14 +442,14 @@
     animation: fish-drift 5s ease-in-out infinite alternate;
   }
   
-  .shadow-fish.face-right {
+  /* .shadow-fish.face-right {
     scale: 1 1;
   }
   
   .shadow-fish.face-left {
     scale: -1 1;
-  }
-  
+  } */
+
   /* School arrangement */
   .fish-1 {
     top: 25px;

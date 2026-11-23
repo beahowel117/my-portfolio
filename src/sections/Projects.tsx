@@ -8,7 +8,8 @@ interface ProjectItem {
     title: string;
     stack: string;
     description?: string;
-    img?: string;
+    img?: string | null;
+
 }
 
 const projects: ProjectItem[] = [
@@ -22,24 +23,32 @@ const projects: ProjectItem[] = [
     {
         id: 2,
         title: "The Entrepreneur",
-        stack: "React, React Native, Claude API",
+        stack: "Monorepo: React, React Native, Claude API",
         description: "React monorepo using Claude API allowing users to assess the market for their business ideas.",
         img: null,
     },
     {
         id: 3,
-        title: "The Entrepreneur",
-        stack: "React, React Native, Claude API",
+        title: "Interactive Congressional Map",
+        stack: "Python, Tavily API, Deepseek API, Next.js, Typescript",
         description: "React monorepo using Claude API allowing users to assess the market for their business ideas.",
-        img: null,
+        img: "/images/congressMap.png",
     },
     {
         id: 4,
-        title: "The Entrepreneur",
+        title: "Story Genius",
         stack: "React, React Native, Claude API",
         description: "React monorepo using Claude API allowing users to assess the market for their business ideas.",
-        img: null,
+        img: "/images/storyGenius.png",
     },
+    {
+        id: 5,
+        title: "Farmers Market",
+        stack: "React, React Native, Claude API",
+        description: "React monorepo using Claude API allowing users to assess the market for their business ideas.",
+        img: "/images/farmersMarket.jpeg",
+    },
+
 ];
 
 function Projects(){
@@ -54,8 +63,10 @@ function Projects(){
             title={selectedProject.title}
             subtitle={selectedProject.stack}
             description={selectedProject.description}
+            img={selectedProject.img}
             backLabel="Back to projects"
             onBack={() => setSelectedProject(null)}
+            flippable={true}
         />
        ): (
         <div className="projects-grid">

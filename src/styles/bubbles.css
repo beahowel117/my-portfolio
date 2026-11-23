@@ -1,7 +1,7 @@
 
 /* Shared appearance for clickable bubbles */
 
-.portfolio-bubble,
+/* .portfolio-bubble,
 .portfolio-bubble-detail {
   color: white;
   border: 1px solid rgba(220, 250, 255, 0.35);
@@ -15,7 +15,7 @@
     inset 0 0 25px rgba(220, 250, 255, 0.12),
     0 0 35px rgba(120, 220, 240, 0.12);
   backdrop-filter: blur(12px);
-}
+} */
 
 /* Clickable bubble */
 
@@ -37,6 +37,19 @@
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
+
+    color: white;
+    border: 1px solid rgba(220, 250, 255, 0.35);
+    background: radial-gradient(
+      circle at 35% 25%,
+      rgba(220, 250, 255, 0.25),
+      rgba(80, 170, 195, 0.13) 55%,
+      rgba(10, 55, 80, 0.35)
+    );
+    box-shadow:
+      inset 0 0 25px rgba(220, 250, 255, 0.12),
+      0 0 35px rgba(120, 220, 240, 0.12);
+    backdrop-filter: blur(12px);
 }
 
 .portfolio-bubble:hover {
@@ -67,62 +80,170 @@
 
 /* Larger selected bubble */
 
+/* 
+/* Detail bubble wrapper */
+
+/* Outer wrapper: no border, background, or square outline */
 .portfolio-bubble-detail {
-  width: min(480px, 88vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  padding: clamp(2rem, 6vw, 4rem);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  text-align: center;
-}
-
-.portfolio-bubble-detail_back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
-}
-
-.portfolio-bubble-detail_subtitle {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
-  opacity: 0.75;
-}
-
-.portfolio-bubble-detail h3 {
-  font-size: 1.8rem;
-  font-weight: 400;
-}
-
-.portfolio-bubble-detail_description {
-  line-height: 1.7;
-  max-width: 340px;
-}
-
-@media (max-width: 600px) {
-  .portfolio-bubble {
-    width: 145px;
-    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
-
-  .portfolio-bubble-detail {
-    aspect-ratio: auto;
-    min-height: 320px;
-    border-radius: 48%;
-    padding: 2.5rem;
+  
+  /* Back to projects button */
+  .portfolio-bubble-detail_back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.85;
   }
-}
+  
+  /* The flipping area */
+  .portfolio-bubble-detail_flip-container {
+    /* width: min(480px, 88vw);
+    aspect-ratio: 1;
+    perspective: 1200px; */
+    width: min(600px, 90vw);
+    aspect-ratio: 4 / 3;
+    perspective: 1200px;
+  }
+  
+  .portfolio-bubble-detail_flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  
+  .portfolio-bubble-detail_flipper.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* Both faces occupy the same space */
+  .portfolio-bubble-detail_front,
+  .portfolio-bubble-detail_back-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* FRONT: Circle with project description */
+  .portfolio-bubble-detail_front {
+    border-radius: 50%;
+    border: 1px solid rgba(220, 250, 255, 0.4);
+    background: radial-gradient(
+      circle at 35% 25%,
+      rgba(220, 250, 255, 0.25),
+      rgba(80, 170, 195, 0.13) 55%,
+      rgba(10, 55, 80, 0.35)
+    );
+    box-shadow:
+      inset 0 0 25px rgba(220, 250, 255, 0.12),
+      0 0 35px rgba(120, 220, 240, 0.12);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vw, 4rem);
+    gap: 1rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .portfolio-bubble-detail_front h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  
+  .portfolio-bubble-detail_subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+  
+  .portfolio-bubble-detail_description {
+    max-width: 340px;
+    line-height: 1.7;
+  }
+  
+  .portfolio-bubble-detail_flip-hint,
+  .portfolio-bubble-detail_image-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+  
+  /* BACK: Square with project screenshot */
+  .portfolio-bubble-detail_back-face {
+    transform: rotateY(180deg);
+    border-radius: 12px;
+    background: rgba(5, 30, 45, 0.8);
+    border: 1px solid rgba(220, 250, 255, 0.4);
+    box-shadow: 0 0 35px rgba(120, 220, 240, 0.15);
+  }
+  
+  .portfolio-bubble-detail_image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .portfolio-bubble-detail_image-hint {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+  }
+  
+  .portfolio-bubble-detail_no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  @media (max-width: 600px) {
+    .portfolio-bubble-detail_flip-container {
+      width: min(380px, 88vw);
+    }
+  
+    .portfolio-bubble-detail_front {
+      padding: 2rem;
+    }
+  
+    .portfolio-bubble-detail_front h3 {
+      font-size: 1.4rem;
+    }
+  
+    .portfolio-bubble-detail_description {
+      font-size: 0.85rem;
+    }
+  }

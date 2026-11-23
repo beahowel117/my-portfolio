@@ -29,4 +29,37 @@
     flex-wrap: wrap;
     gap: 2rem;
   }
+
+  .project-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .project-back {
+    grid-column: 1;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .project-back:hover {
+    color: #a7f5f1;
+  }
+  
+  .project-content > .portfolio-bubble-detail {
+    grid-column: 2;
+    min-width: 0;
+  }
   

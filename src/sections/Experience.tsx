@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import BubbleButton from "../components/BubbleButton";
 import BubbleDetail from "../components/BubbleDetail";
+import SectionNavigation from "../components/SectionNavigation";
 import "../styles/experience.css";
 
 type ExperienceCategory = "technical" | "leadership";
+
+interface ExperienceProps {
+    onBack: () => void;
+    onNext: () => void;
+  }
 
 interface ExperienceItem {
     id: number;
@@ -49,7 +55,8 @@ const experiences: ExperienceItem[] = [
       },
 ];
 
-function Experience(){
+
+function Experience({ onBack, onNext }: ExperienceProps) {
     const [activeCategory, setActiveCategory] = useState<ExperienceCategory | null>(null);
     const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
     
@@ -67,50 +74,62 @@ function Experience(){
           <h2 className="experience-heading">Experience</h2>
     
           {!activeCategory ? (
-            <div className="experience-categories">
-              <button
-                className="experience-category-bubble"
-                onClick={() => handleCategoryChange("technical")}
-              >
-                Technical
-              </button>
-    
-              <button
-                className="experience-category-bubble"
-                onClick={() => handleCategoryChange("leadership")}
-              >
-                Leadership
-              </button>
-            </div>
+            <SectionNavigation onBack={onBack} onNext={onNext}>
+                <div className="experience-categories">
+                <button
+                    className="experience-category-bubble"
+                    onClick={() => handleCategoryChange("technical")}
+                >
+                    Technical
+                </button>
+
+                <button
+                    className="experience-category-bubble"
+                    onClick={() => handleCategoryChange("leadership")}
+                >
+                    Leadership
+                </button>
+                </div>
+            </SectionNavigation>
           ) : selectedExperience ? (
-            <BubbleDetail
+            <div className="experience-content">
+              <button
+                className="experience-back"
+                onClick={() => setSelectedExperience(null)}
+              >
+                <ArrowLeft size={16} />
+                Back to experiences
+              </button>
+          
+              <BubbleDetail
                 title={selectedExperience.title}
                 subtitle={selectedExperience.company}
                 description={selectedExperience.description}
-                backLabel="Back to projects"
-                onBack={() => setSelectedExperience(null)}
-            />
+              />
+            </div>
           ) : (
             <>
-              <button
-                className="experience-back"
-                onClick={() => setActiveCategory(null)}
-              >
-                <ArrowLeft size={16} />
-                Back to categories
-              </button>
-    
-              <div className="experience-bubbles">
-                {filteredExperiences.map((experience) => (
-                  <BubbleButton 
-                  key={experience.id}
-                  title={experience.title}
-                  subtitle={experience.company}
-                  onClick={() => setSelectedExperience(experience)}
-                  />
-                ))}
-              </div>
-            </>
+  <div className="experience-content">
+    <button
+      className="experience-back"
+      onClick={() => setActiveCategory(null)}
+    >
+      <ArrowLeft size={16} />
+      Back to categories
+    </button>
+
+    <div className="experience-bubbles">
+      {filteredExperiences.map((experience) => (
+        <BubbleButton
+          key={experience.id}
+          title={experience.title}
+          subtitle={experience.company}
+          onClick={() => setSelectedExperience(experience)}
+        />
+      ))}
+    </div>
+  </div>
+</>
           )}
         </section>
       );

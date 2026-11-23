@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 3rem 2rem;
     color: white;
   }
@@ -58,15 +58,17 @@
       0 0 45px rgba(120, 220, 240, 0.3);
   }
   
+  
   .experience-bubbles {
-    width: min(850px, 100%);
+    grid-column: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     gap: 2rem;
+    flex-wrap: wrap;
+    width: auto;
   }
-  
+
   .experience-bubble {
     width: 175px;
     height: 175px;
@@ -100,18 +102,7 @@
     margin-top: 0.3rem;
   }
   
-  .experience-back {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    align-self: flex-start;
-    background: none;
-    border: 0;
-    color: white;
-    cursor: pointer;
-    opacity: 0.8;
-    margin-bottom: 2rem;
-  }
+  
   
   .experience-detail-bubble {
     width: min(480px, 85vw);
@@ -131,6 +122,28 @@
     align-self: center;
     margin-bottom: 0.5rem;
   }
+
+  .experience-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  
+  .experience-back {
+    grid-column: 1;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    margin: 0;
+  }
+  
   
   .experience-detail-company {
     text-transform: uppercase;
@@ -164,5 +177,10 @@
       min-height: 320px;
       padding: 2.5rem;
     }
+  }
+
+  .experience-content > .portfolio-bubble-detail {
+    grid-column: 2;
+    min-width: 0;
   }
   

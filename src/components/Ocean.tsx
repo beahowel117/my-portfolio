@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import OceanNav, { type SectionKey } from "./OceanNav";
+import About from "../sections/About";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
+import Values from "../sections/Values";
 import Jellyfish from "./JellyFish";
 import Starfish from "./Starfish";
 import SwimmingFish from "./SwimmingFish";
@@ -22,7 +24,8 @@ const bubbles = Array.from({ length: 18 }, (_, index) => ({
 function Ocean() {
     const [activeSection, setActiveSection] =
     useState<SectionKey>("home");
-  const [fishMovingRight, setFishMovingRight] = useState(false);
+
+    const [fishMovingRight, setFishMovingRight] = useState(false);
 
   useEffect(() => {
   let timeout: ReturnType<typeof setTimeout>;
@@ -70,41 +73,33 @@ function renderSection() {
 
       case "about":
         return (
-          <div className="ocean-intro">
-            <button
-              className="ocean-back"
-              onClick={() => setActiveSection("home")}
-            >
-              <ArrowDown size={15} />
-              Return to the surface
-            </button>
-
-            <p className="ocean-eyebrow">A little about me</p>
-
-            <h2>Curious by nature. Driven to build.</h2>
-
-            <p>
-              My background brings together software engineering,
-              technical leadership, program delivery, and operations.
-              I'm interested in using technology and thoughtful
-              collaboration to make meaningful things happen.
-            </p>
-          </div>
+          <About
+            onBack={() => setActiveSection("home")}
+            onNext={() => setActiveSection("experience")}
+          />
         );
 
       case "experience":
-        return <Experience />;
+        return (
+        <Experience
+          onBack={() => setActiveSection("about")}
+          onNext={() => setActiveSection("projects")}
+        />
+        );
 
       case "projects":
-        return <Projects />;
+        return (
+        <Projects 
+          onBack={() => setActiveSection("experience")}
+          onNext={() => setActiveSection("values")}
+        />
+        );
 
       case "values":
         return (
-          <div className="ocean-intro">
-            <p className="ocean-eyebrow">What matters</p>
-            <h2>Purpose and perspective</h2>
-            <p>We'll build this section later.</p>
-          </div>
+          <Values 
+            onBack={() => setActiveSection("projects")}
+          />
         );
     }
   }
@@ -119,9 +114,9 @@ function renderSection() {
         <div className="ocean-light ocean-light--two" />
         <div className="ocean-caustics" />
         {customFish.map((fish) => (
-  <SwimmingFish key={fish.id} {...fish} />
-))}
-        {/* animated fish*/}
+      <SwimmingFish key={fish.id} {...fish} />
+    ))}
+            {/* animated fish*/}
         <div
             className={`fish-school ${
                 fishMovingRight ? "swimming-right" : "swimming-left"
@@ -184,12 +179,12 @@ function renderSection() {
         {renderSection()}
       </section>
 
-      <div className="ocean-scroll">
+      {/* <div className="ocean-scroll">
         <span>
           {activeSection === "home" ? "Dive in" : "Keep exploring"}
         </span>
         <ArrowDown size={17} />
-      </div>
+      </div> */}
     </main>
   );
 }

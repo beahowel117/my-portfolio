@@ -1,7 +1,14 @@
 import { useState } from "react";
 import BubbleButton from "../components/BubbleButton";
 import BubbleDetail from "../components/BubbleDetail";
+import SectionNavigation from "../components/SectionNavigation";
+import { ArrowLeft } from "lucide-react";
 import "../styles/project.css";
+
+interface ProjectsProps {
+    onBack: () => void;
+    onNext: () => void;
+  }
 
 interface ProjectItem {
     id: number;
@@ -9,7 +16,6 @@ interface ProjectItem {
     stack: string;
     description?: string;
     img?: string | null;
-
 }
 
 const projects: ProjectItem[] = [
@@ -51,36 +57,44 @@ const projects: ProjectItem[] = [
 
 ];
 
-function Projects(){
+function Projects({ onBack, onNext }: ProjectsProps) {
     const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
     return(
-    <section className="project-section">
-        <h2 className="project-heading">Projects</h2>
+    <section className="projects-section">
+        <h2 className="projects-heading">Projects</h2>
+        {selectedProject ? (
+            <div className="project-content">
+                <button
+                className="project-back"
+                onClick={() => setSelectedProject(null)}
+                >
+                <ArrowLeft size={16} />
+                Back to projects
+                </button>
 
-       {selectedProject ? ( 
-        <BubbleDetail 
-            title={selectedProject.title}
-            subtitle={selectedProject.stack}
-            description={selectedProject.description}
-            img={selectedProject.img}
-            backLabel="Back to projects"
-            onBack={() => setSelectedProject(null)}
-            flippable={true}
-        />
-       ): (
-        <div className="projects-grid">
+                <BubbleDetail
+                title={selectedProject.title}
+                subtitle={selectedProject.stack}
+                description={selectedProject.description}
+                img={selectedProject.img}
+                flippable={true}
+                />
+            </div>
+        ) : (
+        <SectionNavigation onBack={onBack} onNext={onNext}>
+            <div className="projects-grid">
             {projects.map((project) => (
-                <BubbleButton 
-                    key={project.id}
-                    title={project.title}
-                    subtitle={project.stack}
-                    onClick={() => setSelectedProject(project)}
+                <BubbleButton
+                key={project.id}
+                title={project.title}
+                subtitle={project.stack}
+                onClick={() => setSelectedProject(project)}
                 />
             ))}
-        </div>
-       )
-        }
+            </div>
+        </SectionNavigation>
+        )}         
     </section>
     );
 };

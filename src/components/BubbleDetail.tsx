@@ -64,14 +64,15 @@
 
 import { useState } from "react";
 import { ArrowLeft, RotateCcw } from "lucide-react";
+import "../styles/bubbles.css";
 
 interface BubbleDetailProps {
   title: string;
   subtitle?: string;
   description?: string;
   img?: string | null;
-  backLabel: string;
-  onBack: () => void;
+  backLabel?: string;
+  onBack?: () => void;
   flippable?: boolean;
 }
 
@@ -88,13 +89,15 @@ function BubbleDetail({
 
   return (
     <div className="portfolio-bubble-detail">
-      <button
-        className="portfolio-bubble-detail_back-button"
-        onClick={onBack}
-      >
-        <ArrowLeft size={16} />
-        {backLabel}
-      </button>
+     {/* {onBack && (
+  <button
+    className="portfolio-bubble-detail_back-button"
+    onClick={onBack}
+  >
+    <ArrowLeft size={16} />
+    {backLabel}
+  </button>
+)} */}
 
       <div className="portfolio-bubble-detail_flip-container">
       <button

@@ -20,7 +20,7 @@
 /* Clickable bubble */
 
 .portfolio-bubble {
-  width: 175px;
+  width: clamp(125px, 18vw, 175px);
   aspect-ratio: 1;
   border-radius: 50%;
   padding: 1.25rem;

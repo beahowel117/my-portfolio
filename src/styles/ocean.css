@@ -1,4 +1,5 @@
 
+
 .ocean-page {
     position: relative;
     min-height: 100svh;
@@ -8,6 +9,10 @@
     background: #07394b;
     font-family: "DM Sans", sans-serif;
   }
+  
+  /* =================================
+     OCEAN BACKGROUND
+  ================================= */
   
   .ocean-background,
   .ocean-background > div {
@@ -22,7 +27,6 @@
     background: #07394b;
   }
   
-  /* Replace this with your underwater photograph */
   .ocean-background_image {
     background-image: url("/images/ocean4.jpeg");
     background-size: cover;
@@ -89,7 +93,10 @@
     animation: caustic-drift 18s linear infinite;
   }
   
-  /* Bubbles */
+  /* =================================
+     BACKGROUND BUBBLES
+  ================================= */
+  
   .ocean-bubbles {
     position: absolute;
     inset: 0;
@@ -116,53 +123,11 @@
     animation-iteration-count: infinite;
   }
   
-  /* Header */
-  .ocean-header {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px 5.5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, .13);
-  }
   
-  .ocean-logo {
-    border: 0;
-    color: white;
-    background: none;
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    cursor: pointer;
-  }
+  /* =================================
+     HERO
+  ================================= */
   
-  .ocean-logo::first-letter {
-    color: #91e8e8;
-  }
-  
-  .ocean-nav {
-    display: flex;
-    gap: clamp(16px, 3vw, 40px);
-  }
-  
-  .ocean-nav button {
-    border: 0;
-    padding: 8px 0;
-    color: rgba(255, 255, 255, .85);
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color .3s ease, opacity 0.3s ease;
-  }
-  
-  .ocean-nav button:hover {
-    color: #a7f5f1;
-  }
-  
-  /* Hero */
   .ocean-hero {
     min-height: 100svh;
     display: flex;
@@ -196,7 +161,6 @@
   }
   
   .ocean-hero h2 {
-    /* margin: 18px 0 0; */
     font-size: clamp(13px, 2vw, 19px);
     font-weight: 300;
     letter-spacing: .25em;
@@ -241,12 +205,14 @@
   
   .ocean-intro {
     max-width: 600px;
-    padding: 48px 48px 60px 48px;
+    padding: 48px 48px 60px;
     border: 1px solid rgba(220, 250, 255, .2);
     border-radius: 50%;
     background: rgba(0, 38, 56, .2);
     backdrop-filter: blur(10px);
-    box-shadow: inset 0 3px 8px rgba(255, 255, 255, .35), 0 0 22px rgba(114, 229, 240, .2);
+    box-shadow:
+      inset 0 3px 8px rgba(255, 255, 255, .35),
+      0 0 22px rgba(114, 229, 240, .2);
   }
   
   .ocean-intro h2 {
@@ -271,17 +237,20 @@
     gap: 8px;
     margin-bottom: 25px;
     border: 0;
-    /* color: #c6f5f4; */
     color: rgba(255, 255, 255, .85);
     background: none;
     font-size: 15px;
     cursor: pointer;
   }
-
-  .ocean-back button:hover {
+  
+  .ocean-back:hover {
     color: #a7f5f1;
   }
-
+  
+  /* =================================
+     SCROLL INDICATOR
+  ================================= */
+  
   .ocean-scroll {
     position: absolute;
     z-index: 2;
@@ -300,8 +269,10 @@
   .ocean-scroll svg {
     animation: ocean-arrow 2s ease-in-out infinite;
   }
-
   
+  /* =================================
+     ANIMATIONS
+  ================================= */
   
   @keyframes bubble-rise {
     0% {
@@ -333,13 +304,21 @@
   }
   
   @keyframes caustic-drift {
-    from { background-position: 0 0; }
-    to { background-position: 180px 100px; }
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 180px 100px;
+    }
   }
   
   @keyframes underwater-drift {
-    from { transform: scale(1.02) translate3d(-.5%, 0, 0); }
-    to { transform: scale(1.07) translate3d(.5%, -1%, 0); }
+    from {
+      transform: scale(1.02) translate3d(-.5%, 0, 0);
+    }
+    to {
+      transform: scale(1.07) translate3d(.5%, -1%, 0);
+    }
   }
   
   @keyframes ocean-arrive {
@@ -354,49 +333,19 @@
   }
   
   @keyframes ocean-arrow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-  
-  @media (max-width: 760px) {
-    .ocean-header {
-      padding: 22px 6%;
-      flex-wrap: wrap;
-      gap: 18px;
+    0%, 100% {
+      transform: translateY(0);
     }
-  
-    .ocean-nav {
-      order: 2;
-      width: 100%;
-      justify-content: space-between;
-      gap: 8px;
-    }
-  
-    .ocean-nav button {
-      font-size: 9px;
-    }
-  
-    .ocean-hero h1 {
-      font-size: clamp(48px, 13vw, 75px);
-    }
-  
-    .ocean-hero h2 {
-      letter-spacing: .13em;
+    50% {
+      transform: translateY(6px);
     }
   }
   
-  @media (prefers-reduced-motion: reduce) {
-    .ocean-page *,
-    .ocean-page *::before,
-    .ocean-page *::after {
-      animation-duration: .01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: .01ms !important;
-    }
-  }
-
-  /* School of fish */
-.fish-school {
+  /* =================================
+     SCHOOL OF FISH
+  ================================= */
+  
+  .fish-school {
     position: absolute;
     top: 38%;
     left: -35%;
@@ -404,13 +353,11 @@
     height: 220px;
     opacity: 0.4;
     pointer-events: none;
-    /* animation: school-swim 48s linear infinite; */
-    /* animation-delay: 4s; */
     filter: blur(1.5px);
     z-index: 1;
     will-change: transform;
   }
-
+  
   .fish-school.swimming-right {
     transform: translateX(145vw);
     transition: transform 48s linear;
@@ -427,7 +374,6 @@
     display: block;
     width: 65px;
     height: 30px;
-    /* background: rgba(3, 24, 38, 0.55); */
     background: rgba(1, 14, 28, 0.8);
     clip-path: polygon(
       0 50%,
@@ -442,14 +388,6 @@
     animation: fish-drift 5s ease-in-out infinite alternate;
   }
   
-  /* .shadow-fish.face-right {
-    scale: 1 1;
-  }
-  
-  .shadow-fish.face-left {
-    scale: -1 1;
-  } */
-
   /* School arrangement */
   .fish-1 {
     top: 25px;
@@ -506,38 +444,27 @@
     animation-delay: -1s;
   }
   
-  /* The entire school swims across the scene 
-  @keyframes school-swim {
-    0% {
-      transform: translateX(0);
-      opacity: 0;
-    }
-  
-    12% {
-      opacity: 0.45;
-    }
-  
-    75% {
-      opacity: 0.45;
-    }
-  
-    100% {
-      transform: translateX(145vw);
-      opacity: 0;
-    }
-  }
-  */
-  
   /* Gentle movement within the school */
   @keyframes fish-drift {
     from {
       margin-top: -4px;
     }
-  
     to {
       margin-top: 4px;
     }
   }
-
-
+  
+  
+  
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .ocean-page *,
+    .ocean-page *::before,
+    .ocean-page *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+  
   

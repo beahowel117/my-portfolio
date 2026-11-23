@@ -1,0 +1,171 @@
+/* =================================
+     HEADER AND DESKTOP NAVIGATION
+  ================================= */
+  
+  .ocean-header {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 5.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, .13);
+  }
+  
+  .ocean-logo {
+    border: 0;
+    color: white;
+    background: none;
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  
+  .ocean-logo::first-letter {
+    color: #91e8e8;
+  }
+  
+  .ocean-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 40px);
+  }
+  
+  .ocean-nav button {
+    border: 0;
+    padding: 8px 0;
+    color: rgba(255, 255, 255, .85);
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color .3s ease, opacity .3s ease;
+  }
+  
+  .ocean-nav button:hover,
+  .ocean-nav button.active {
+    color: #a7f5f1;
+  }
+  
+  /* Mobile navigation elements are hidden on desktop */
+  .ocean-menu-toggle,
+  .ocean-mobile-nav {
+    display: none;
+  }
+  
+  /* =================================
+     RESPONSIVE NAVIGATION AND LAYOUT
+  ================================= */
+  
+  @media (max-width: 760px) {
+    .ocean-header {
+      padding: 20px 6%;
+      flex-wrap: nowrap;
+    }
+  
+    /* Hide desktop navigation */
+    .ocean-header .ocean-nav {
+      display: none;
+    }
+  
+    /* Show hamburger button */
+    .ocean-menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border: none;
+      border-radius: 0;
+      color: white;
+      background: transparent;
+      box-shadow: none;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      z-index: 5;
+    }
+  
+    .ocean-menu-toggle:hover,
+    .ocean-menu-toggle:focus {
+      color: #a7f5f1;
+      background: transparent;
+      outline: none;
+    }
+  
+    /* Mobile dropdown menu */
+    .ocean-mobile-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0 6%;
+      background: rgba(3, 35, 50, 0.97);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+  
+      transition:
+        max-height 0.35s ease,
+        opacity 0.3s ease,
+        padding 0.35s ease,
+        visibility 0.35s ease;
+    }
+  
+    .ocean-mobile-nav.is-open {
+      max-height: 350px;
+      padding: 12px 6% 20px;
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    /* Mobile menu links */
+    .ocean-mobile-nav button {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      color: rgba(255, 255, 255, 0.9);
+      background: transparent;
+      box-shadow: none;
+      appearance: none;
+      -webkit-appearance: none;
+      text-align: left;
+      font-family: inherit;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  
+    .ocean-mobile-nav button:hover,
+    .ocean-mobile-nav button.active {
+      color: #a7f5f1;
+      background: transparent;
+    }
+  
+    .ocean-hero {
+      padding: 110px 20px 90px;
+    }
+  
+    .ocean-hero h1 {
+      font-size: clamp(48px, 13vw, 75px);
+    }
+  
+    .ocean-hero h2 {
+      letter-spacing: 0.13em;
+    }
+  
+    .ocean-eyebrow {
+      font-size: 12px;
+      letter-spacing: .18em;
+    }
+  }

@@ -32,13 +32,21 @@ const experiences: ExperienceItem[] = [
       {
         id: 2,
         category: "technical",
+        title: "Software Engineer",
+        company: "New York Life",
+        description:
+          "Led front-end development and helped build a customer-facing digital platform. Worked across engineering, product, QA, and business teams.",
+      },
+      {
+        id: 3,
+        category: "technical",
         title: "Software Developer",
         company: "MetroTek",
         description:
           "Owned the development lifecycle of a responsive website, from requirements gathering through deployment.",
       },
       {
-        id: 3,
+        id: 4,
         category: "leadership",
         title: "Operations & Project Manager",
         company: "EB Florals",
@@ -46,7 +54,7 @@ const experiences: ExperienceItem[] = [
           "Managed operations, vendors, logistics, inventory, and orders in a growing business.",
       },
       {
-        id: 4,
+        id: 5,
         category: "leadership",
         title: "Program Manager",
         company: "Work on Climate",
@@ -91,46 +99,44 @@ function Experience({ onBack, onNext }: ExperienceProps) {
                 </button>
                 </div>
             </SectionNavigation>
-          ) : selectedExperience ? (
-            <div className="experience-content">
-              <button
-                className="experience-back"
-                onClick={() => setSelectedExperience(null)}
-              >
-                <ArrowLeft size={16} />
-                Back to experiences
-              </button>
-          
-              <BubbleDetail
-                title={selectedExperience.title}
-                subtitle={selectedExperience.company}
-                description={selectedExperience.description}
-              />
+         ) : selectedExperience ? (
+          <div className="experience-content">
+            <button
+              className="experience-back"
+              onClick={() => setSelectedExperience(null)}
+            >
+              <ArrowLeft size={16} />
+              Back to experiences
+            </button>
+        
+            <BubbleDetail
+              title={selectedExperience.title}
+              subtitle={selectedExperience.company}
+              description={selectedExperience.description}
+            />
+          </div>
+        ) : (
+          <div className="experience-content">
+            <button
+              className="experience-back"
+              onClick={() => setActiveCategory(null)}
+            >
+              <ArrowLeft size={16} />
+              Back to categories
+            </button>
+        
+            <div className="experience-bubbles">
+              {filteredExperiences.map((experience) => (
+                <BubbleButton
+                  key={experience.id}
+                  title={experience.title}
+                  subtitle={experience.company}
+                  onClick={() => setSelectedExperience(experience)}
+                />
+              ))}
             </div>
-          ) : (
-            <>
-  <div className="experience-content">
-    <button
-      className="experience-back"
-      onClick={() => setActiveCategory(null)}
-    >
-      <ArrowLeft size={16} />
-      Back to categories
-    </button>
-
-    <div className="experience-bubbles">
-      {filteredExperiences.map((experience) => (
-        <BubbleButton
-          key={experience.id}
-          title={experience.title}
-          subtitle={experience.company}
-          onClick={() => setSelectedExperience(experience)}
-        />
-      ))}
-    </div>
-  </div>
-</>
-          )}
+          </div>
+        )}
         </section>
       );
     }

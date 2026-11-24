@@ -142,7 +142,7 @@
       -webkit-appearance: none;
       text-align: left;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 16px;
       cursor: pointer;
     }
   
@@ -206,14 +206,13 @@
   .ocean-scroll {
     position: absolute;
     z-index: 2;
-    bottom: 30px;
     left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     color: rgba(255, 255, 255, .85);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: .12em;
     transform: translateX(-50%);
   }
@@ -221,4 +220,16 @@
   .ocean-scroll svg {
     animation: ocean-arrow 2s ease-in-out infinite;
   }
+  @media (max-width: 768px) {
+    .section-navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 0;
+    }
   
+    .section-navigation .section-navigation_link {
+      display: none;
+    }
+  }

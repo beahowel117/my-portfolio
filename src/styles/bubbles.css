@@ -20,7 +20,7 @@
 /* Clickable bubble */
 
 .portfolio-bubble {
-  width: clamp(125px, 18vw, 175px);
+  width: clamp(125px, 22vw, 185px);
   aspect-ratio: 1;
   border-radius: 50%;
   padding: 1.25rem;
@@ -111,7 +111,7 @@
     /* width: min(480px, 88vw);
     aspect-ratio: 1;
     perspective: 1200px; */
-    width: min(600px, 90vw);
+    width: min(615px, 90vw);
     aspect-ratio: 4 / 3;
     perspective: 1200px;
   }
@@ -163,7 +163,6 @@
     align-items: center;
     justify-content: center;
     padding: clamp(2rem, 6vw, 4rem);
-    gap: 1rem;
     text-align: center;
     color: white;
   }
@@ -232,7 +231,7 @@
   
   @media (max-width: 600px) {
     .portfolio-bubble-detail_flip-container {
-      width: min(380px, 88vw);
+      width: min(580px, 88vw);
     }
   
     .portfolio-bubble-detail_front {
@@ -244,7 +243,7 @@
     }
   
     .portfolio-bubble-detail_description {
-      font-size: 0.85rem;
+      font-size: 16px;
     }
   }
 

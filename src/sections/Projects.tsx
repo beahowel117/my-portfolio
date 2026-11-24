@@ -8,6 +8,7 @@ import "../styles/project.css";
 interface ProjectsProps {
     onBack: () => void;
     onNext: () => void;
+    isMobile: boolean;
   }
 
 interface ProjectItem {
@@ -57,7 +58,7 @@ const projects: ProjectItem[] = [
 
 ];
 
-function Projects({ onBack, onNext }: ProjectsProps) {
+function Projects({ onBack, onNext, isMobile }: ProjectsProps) {
     const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
     return(
@@ -66,11 +67,11 @@ function Projects({ onBack, onNext }: ProjectsProps) {
         {selectedProject ? (
             <div className="project-content">
                 <button
-                className="project-back"
-                onClick={() => setSelectedProject(null)}
+                    className="project-back"
+                    onClick={() => setSelectedProject(null)}
                 >
-                <ArrowLeft size={16} />
-                Back to projects
+                    <ArrowLeft size={16} />
+                    Back to projects
                 </button>
 
                 <BubbleDetail
@@ -84,14 +85,14 @@ function Projects({ onBack, onNext }: ProjectsProps) {
         ) : (
         <SectionNavigation onBack={onBack} onNext={onNext}>
             <div className="projects-grid">
-            {projects.map((project) => (
-                <BubbleButton
-                key={project.id}
-                title={project.title}
-                subtitle={project.stack}
-                onClick={() => setSelectedProject(project)}
-                />
-            ))}
+                {projects.map((project) => (
+                    <BubbleButton
+                        key={project.id}
+                        title={project.title}
+                        subtitle={project.stack}
+                        onClick={() => setSelectedProject(project)}
+                    />
+                ))}
             </div>
         </SectionNavigation>
         )}         

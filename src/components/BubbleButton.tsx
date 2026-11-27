@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface BubbleButtonProps {
     title: string,

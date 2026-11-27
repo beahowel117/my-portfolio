@@ -27,7 +27,7 @@ const experiences: ExperienceItem[] = [
         title: "Technical Lead",
         company: "New York Life",
         description:
-          "Led front-end development and helped build a customer-facing digital platform. Worked across engineering, product, QA, and business teams.",
+          "Led a team of CI/CD engineers, collaborating across teams to plan sprints and deliver releases. Remained hands-on in development while supporting engineers. Implemented and trained engineers on the integration of AI in development to help increase efficiency. ",
       },
       {
         id: 2,
@@ -35,7 +35,7 @@ const experiences: ExperienceItem[] = [
         title: "Software Engineer",
         company: "New York Life",
         description:
-          "Developed features for a new platform for insurance agents",
+          "Developed features and improved performance for a new digital insurance sales platform that helped increase sales by 33%.",
       },
       {
         id: 3,
@@ -48,18 +48,26 @@ const experiences: ExperienceItem[] = [
       {
         id: 4,
         category: "leadership",
-        title: "Operations & Project Manager",
+        title: "Program Manager",
+        company: "Work on Climate",
+        description:
+          "Led volunteer program management and helped coordinate work across a mission-driven organization.",
+      },
+      {
+        id: 5,
+        category: "leadership",
+        title: "Head of Operations",
         company: "EB Florals",
         description:
           "Managed operations, vendors, logistics, inventory, and orders in a growing business.",
       },
       {
-        id: 5,
+        id: 6,
         category: "leadership",
-        title: "Program Manager",
-        company: "Work on Climate",
+        title: "Account Manager",
+        company: "Roberto Coin",
         description:
-          "Led volunteer program management and helped coordinate work across a mission-driven organization.",
+          "Managed luxury jewelry accounts, built client relationships, and led sales training and trunk shows. Collaborated with celebrity stylists, developed marketing campaigns, and oversaw product and inventory management.",
       },
 ];
 

@@ -1,5 +1,5 @@
 import SectionNavigation from "../components/SectionNavigation";
-import BubbleDetail from "../components/BubbleDetail";
+
 
 interface AboutProps {
   onBack: () => void;

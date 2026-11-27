@@ -63,7 +63,7 @@
 
 
 import { useState } from "react";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import "../styles/bubbles.css";
 
 interface BubbleDetailProps {
@@ -81,8 +81,6 @@ function BubbleDetail({
   subtitle,
   description,
   img,
-  backLabel,
-  onBack,
   flippable = false,
 }: BubbleDetailProps) {
   const [isFlipped, setIsFlipped] = useState(false);

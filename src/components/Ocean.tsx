@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowRight, ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import OceanNav, { type SectionKey } from "./OceanNav";
 import About from "../sections/About";
 import Experience from "../sections/Experience";

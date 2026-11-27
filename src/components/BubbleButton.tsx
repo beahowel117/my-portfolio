@@ -10,7 +10,6 @@ interface BubbleButtonProps {
 function BubbleButton({
     title,
     subtitle,
-    size,
     onClick
 }: BubbleButtonProps) {
 

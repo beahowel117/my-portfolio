@@ -64,7 +64,7 @@ const projects: ProjectItem[] = [
     },
 ];
 
-function Projects({ onBack, onNext, isMobile }: ProjectsProps) {
+function Projects({ onBack, onNext}: ProjectsProps) {
     const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
     return(

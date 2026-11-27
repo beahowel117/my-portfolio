@@ -173,6 +173,8 @@
   }
   
   .portfolio-bubble-detail_subtitle {
+    max-width: 75%;
+    text-wrap: balance;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 0.8rem;

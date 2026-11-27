@@ -35,7 +35,7 @@ const experiences: ExperienceItem[] = [
         title: "Software Engineer",
         company: "New York Life",
         description:
-          "Led front-end development and helped build a customer-facing digital platform. Worked across engineering, product, QA, and business teams.",
+          "Developed features for a new platform for insurance agents",
       },
       {
         id: 3,

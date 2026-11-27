@@ -5,7 +5,7 @@ import OceanNav, { type SectionKey } from "./OceanNav";
 import About from "../sections/About";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
-import Values from "../sections/Values";
+import Contact from "../sections/Contact";
 import Jellyfish from "./JellyFish";
 import Starfish from "./Starfish";
 import SwimmingFish from "./SwimmingFish";
@@ -121,18 +121,18 @@ function renderSection(section: SectionKey = activeSection) {
         return (
         <Projects 
           onBack={() => setActiveSection("experience")}
-          onNext={() => setActiveSection("values")}
+          onNext={() => setActiveSection("contact")}
           isMobile={isMobile}
         />
         );
 
-      case "values":
+      case "contact":
         return (
-          <Values
+          <Contact
             onBack={() =>
               isMobile
                 ? scrollToSection("home")
-                : setActiveSection("projects")
+                : setActiveSection("home")
             }
             isMobile={isMobile}
           />
@@ -233,8 +233,8 @@ function renderSection(section: SectionKey = activeSection) {
             {renderSection("projects")}
           </section>
 
-          <section id="values" className="ocean-hero ocean-mobile-section">
-            {renderSection("values")}
+          <section id="contact" className="ocean-hero ocean-mobile-section">
+            {renderSection("contact")}
           </section>
         </div>
       ) : (

@@ -3,16 +3,16 @@ import { ArrowDown, ArrowLeft, ArrowUpRight } from "lucide-react";
 // import './App.css'
 import '../styles/landscape.css'
 
-type SectionKey = "home" | "about" | "experience" | "projects" | "values";
+type SectionKey = "home" | "about" | "experience" | "projects" | "contact";
 
 const sections: Record<Exclude<SectionKey, "home">,
 {eyebrow: string; title: string; description: string} 
 > = {
   about: {
     eyebrow: "A little about me",
-    title: "Curious by nature. Driven to build.",
+    title: "Curious by nature. Driven to build. Building with a bigger picture in mind.",
     description:
-      "I'm a cross-functional professional whose path has moved through software engineering, technical leadership, program delivery, and startup operations. I enjoy connecting people and ideas, making sense of complexity, and turning ambitious goals into practical outcomes.",
+      "I'm a cross-functional professional whose path has moved through software engineering, technical leadership, program delivery, and startup operations. I enjoy connecting people and ideas, making sense of complexity, and turning ambitious goals into practical outcomes. I'm deeply interested in conservation, wildlife, and the relationship between people and the natural world. I believe technology, thoughtful leadership, and collective action can help create a more sustainable future.",
   },
   experience: {
     eyebrow: "The journey so far",
@@ -26,7 +26,7 @@ const sections: Record<Exclude<SectionKey, "home">,
     description:
       "A collection of software projects, experiments, and ideas — from web applications and data tools to projects exploring how technology can help us better understand the world.",
   },
-  values: {
+  contact: {
     eyebrow: "Beyond the screen",
     title: "Building with a bigger picture in mind.",
     description:
@@ -90,7 +90,7 @@ function Landscape() {
                 ["about", "About"],
                 ["experience", "Experience"],
                 ["projects", "Projects"],
-                ["values", "What matters"],
+                ["contact", "What matters"],
               ] as const
             ).map(([key, label]) => (
               <button

@@ -7,7 +7,7 @@ export type SectionKey =
     | "about"
     | "experience"
     | "projects"
-    | "values";
+    | "contact";
 
 interface OceanNavProps {
     activeSection: SectionKey;
@@ -19,7 +19,7 @@ const navItems: { label: string; key: SectionKey }[] = [
     { label: "About", key: "about" },
     { label: "Experience", key: "experience" },
     { label: "Projects", key: "projects" },
-    { label: "What matters", key: "values" }, 
+    { label: "Connect", key: "contact" }, 
 ]; 
 
 function OceanNav({ activeSection, onNavigate }: OceanNavProps){

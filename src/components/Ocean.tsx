@@ -29,7 +29,7 @@ function Ocean() {
     const [activeSection, setActiveSection] =
     useState<SectionKey>("home");
 
-    const [fishMovingRight, setFishMovingRight] = useState(false);
+    const [_fishMovingRight, setFishMovingRight] = useState(false);
 
 
   useEffect(() => {
